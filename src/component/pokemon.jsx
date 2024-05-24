@@ -1,9 +1,20 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
+import axios from "axios";
 
 
 const Pokemon = () => {
 
 const[num, setnum] = useState();
+
+useEffect(()=>{
+  async function getdata(){
+    const response  = await axios.get(`https://pokeapi.co/api/v2/pokemon/${num}`);
+    console.log(response.data.name);
+  }
+
+getdata();
+
+});
 
   return (
     <>
